@@ -27,12 +27,7 @@ def category(request, category_id):
 
 
 def recipe(request, recipe_id):
-    recipe = get_object_or_404(
-        Recipe.objects.filter(
-            pk=recipe_id,
-            is_published=True
-        )
-    )
+    recipe = get_object_or_404(Recipe, pk=recipe_id, is_published=True)
 
     return render(request, 'recipes/pages/recipe-view.html', context={
         'recipe': recipe,
